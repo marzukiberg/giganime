@@ -3,4 +3,7 @@ module.exports = {
   images: {
     domains: ["anime-indo.link", "animeindo.one", "i0.wp.com"],
   },
+  eslint: {
+    ignoreDuringBuilds: true,
+  },
 };
