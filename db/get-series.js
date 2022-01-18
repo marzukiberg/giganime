@@ -98,7 +98,7 @@ export const getSeries = async (slug) => {
   const items3 = await Scraper.StaticScraper.create(
     `${server3}anime/${slug}/`
   ).scrape(function ($) {
-    const content = $("article")
+    const content = $(".post-body")
       .map(function () {
         return {
           title: $(this).find("h1.entry-title").text(),
@@ -113,7 +113,7 @@ export const getSeries = async (slug) => {
               );
             })
             .get(),
-          thumb: $(this).find(".thumb img").attr("src"),
+          thumb: $(this).find("img").attr("src"),
           rating: $(this).find(".rating-area [itemprop=ratingValue]").text(),
           tags: $(this)
             .find(".genre-info a")

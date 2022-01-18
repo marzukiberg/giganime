@@ -9,33 +9,37 @@ export default function Series(props) {
   const content = data?.content;
   const episodes = data?.episodeList;
 
-  const keywords = [...content?.tags, content.title];
+  const keywords = content?.tags
+    ? [...content.tags, content.title]
+    : [content.title];
   return (
     <>
       <Header title={"Anime  - GigaNime"} keywords={keywords.join(", ")} />
 
       <main className="p-3">
         {/* thumb cover */}
-        <div className="relative mb-24">
-          <Image
-            src={content.thumb}
-            width={400}
-            height={200}
-            layout="responsive"
-            objectFit="cover"
-            quality={100}
-            objectPosition={"top"}
-          />
-          <div className="bg-black absolute w-full h-full inset-0 z-1 bg-opacity-50"></div>
-          <div className="absolute left-1/2 top-1/2 w-32 h-48 transform -translate-x-1/2">
+        {content?.thumb && (
+          <div className="relative mb-24">
             <Image
               src={content.thumb}
-              layout="fill"
-              objectFit="contain"
+              width={400}
+              height={200}
+              layout="responsive"
+              objectFit="cover"
               quality={100}
+              objectPosition={"top"}
             />
+            <div className="bg-black absolute w-full h-full inset-0 z-1 bg-opacity-50"></div>
+            <div className="absolute left-1/2 top-1/2 w-32 h-48 transform -translate-x-1/2">
+              <Image
+                src={content.thumb}
+                layout="fill"
+                objectFit="contain"
+                quality={100}
+              />
+            </div>
           </div>
-        </div>
+        )}
 
         {/* content */}
         <div className="p-3 space-y-3">
@@ -45,7 +49,7 @@ export default function Series(props) {
           />
           <p className="text-gray-700 text-center">{content.desc}</p>
           <div className="info_content">
-            {content?.infoContent.map((item, idx) => {
+            {content?.infoContent?.map((item, idx) => {
               return (
                 <div className="p-2 border-b text-sm" key={idx}>
                   {item}
@@ -54,7 +58,7 @@ export default function Series(props) {
             })}
           </div>
           <div className="tags flex flex-wrap" style={{ gap: 12 }}>
-            {content?.tags.map((item, idx) => {
+            {content?.tags?.map((item, idx) => {
               return (
                 <div className="inline text-sm rounded text-blue-400" key={idx}>
                   #{item}
