@@ -25,13 +25,13 @@ export const getUpdated = async (extraPath = "") => {
             .find("a.arrow_pag")
             .has("#prevpagination")
             .attr("href")
-            .match(/\d/g)
+            ?.match(/\d/g)
             ?.join(""),
           next: $(this)
             .find("a.arrow_pag")
             .has("#nextpagination")
             .attr("href")
-            .match(/\d/g)
+            ?.match(/\d/g)
             ?.join(""),
           links: $(this)
             .find("a")
@@ -74,20 +74,20 @@ export const getUpdated = async (extraPath = "") => {
             prev: $(this)
               .find("a:contains(«)")
               .attr("href")
-              .match(/\d/g)?
-              .join(""),
+              ?.match(/\d/g)
+              ?.join(""),
             next: $(this)
               .find("a:contains(»)")
               .attr("href")
-              .match(/\d/g)?
-              .join(""),
+              ?.match(/\d/g)
+              ?.join(""),
             links: $(this)
               .find("a")
               .not(":contains(«)")
               .not(":contains(»)")
               .map(function () {
                 return {
-                  link: $(this).attr("href").match(/\d/g)?.join(""),
+                  link: $(this).attr("href")?.match(/\d/g)?.join(""),
                   text: $(this).text(),
                 };
               })
@@ -141,14 +141,14 @@ export const getUpdated = async (extraPath = "") => {
               .has("#prevpagination")
               .attr("href")
               ?.replace(server3, "")
-              .match(/\d/g)
+              ?.match(/\d/g)
               ?.join(""),
             next: $(this)
               .find("a.arrow_pag")
               .has("#nextpagination")
               .attr("href")
               ?.replace(server3, "")
-              .match(/\d/g)
+              ?.match(/\d/g)
               ?.join(""),
             links: $(this)
               .find("a")
@@ -158,7 +158,7 @@ export const getUpdated = async (extraPath = "") => {
                   link: $(this)
                     .attr("href")
                     ?.replace(server3, "")
-                    .match(/\d/g)
+                    ?.match(/\d/g)
                     ?.join(""),
                   text: $(this).text(),
                 };
