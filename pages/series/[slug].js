@@ -9,7 +9,7 @@ export default function Series(props) {
   const content = data?.content;
   const episodes = data?.episodeList;
 
-  const keywords = [...content.tags, content.title];
+  const keywords = [...content?.tags, content.title];
   return (
     <>
       <Header title={"Anime  - GigaNime"} keywords={keywords.join(", ")} />

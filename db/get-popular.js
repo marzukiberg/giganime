@@ -71,7 +71,7 @@ export const getPopular = async () => {
         };
       })
       .get();
-    console.log(data);
+
     return { data };
   });
   if (items3?.data.length > 0) {

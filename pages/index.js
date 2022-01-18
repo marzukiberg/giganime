@@ -58,7 +58,7 @@ export default function Home(props) {
 }
 
 export async function getServerSideProps(ctx) {
-  const { p } = ctx.query || { p: "" };
+  const p = ctx.query.p || "";
   const updatedRes = await fetch(apiURL + "updated/" + p);
   const popularRes = await fetch(apiURL + "popular");
 
