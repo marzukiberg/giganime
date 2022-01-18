@@ -1,0 +1,6 @@
+.text-wrap-1 {
+  white-space: nowrap;
+  overflow: hidden;
+  position: relative;
+  text-overflow: ellipsis;
+}
