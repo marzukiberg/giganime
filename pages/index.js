@@ -51,7 +51,7 @@ export default function Home(props) {
           </div>
         </article>
 
-        <PopularItems data={DTPopular} />
+        {/* <PopularItems data={DTPopular} /> */}
       </main>
     </>
   );
@@ -64,12 +64,12 @@ export async function getServerSideProps(ctx) {
 
   const errorCode = (await updatedRes.ok) ? false : await updatedRes.status;
   const updated = await updatedRes.json();
-  const popular = await popularRes.json();
+  // const popular = await popularRes.json();
 
   return {
     props: {
       updated,
-      popular,
+      popular: [],
       error: {
         code: errorCode,
         message: "Error fetching server side props",
